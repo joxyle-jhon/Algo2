@@ -36,7 +36,10 @@ double closestUtil(vector<Point>& points, int left, int right) {
         double minDist = numeric_limits<double>::max();
         for (int i = left; i < right; ++i) {
             for (int j = i + 1; j < right; ++j) {
-                minDist = min(minDist, distance(points[i], points[j]));
+                double dist = distance(points[i], points[j]);
+                if (dist < minDist) {
+                    minDist = dist;
+                }
             }
         }
         return minDist;
@@ -61,7 +64,10 @@ double closestUtil(vector<Point>& points, int left, int right) {
 
     for (size_t i = 0; i < strip.size(); ++i) {
         for (size_t j = i + 1; j < strip.size() && (strip[j].y - strip[i].y) < minDist; ++j) {
-            minDist = min(minDist, distance(strip[i], strip[j]));
+            double dist = distance(strip[i], strip[j]);
+            if (dist < minDist) {
+                minDist = dist;
+            }
         }
     }
 
@@ -77,6 +83,28 @@ double closestPair(vector<Point>& points) {
 int main() {
     vector<Point> points = {{2, 3}, {12, 30}, {4, 1}, {7, 16}, {5, 5}};
     double minDistance = closestPair(points);
-    cout << "Closest pair: Distance = " << minDistance << endl;
+
+    cout << "Given points: ";
+    cout << "[";
+    for (size_t i = 0; i < points.size(); ++i) {
+        cout << "(" << points[i].x << ", " << points[i].y << ")";
+        if (i != points.size() - 1) {
+            cout << ", ";
+        }
+    }
+    cout << "]" << endl;
+
+    cout << "Closest pair: ";
+    for (size_t i = 0; i < points.size(); ++i) {
+        for (size_t j = i + 1; j < points.size(); ++j) {
+            if (distance(points[i], points[j]) == minDistance) {
+                cout << "(" << points[i].x << ", " << points[i].y << ") and ";
+                cout << "(" << points[j].x << ", " << points[j].y << ")";
+                break;
+            }
+        }
+    }
+    cout << " with distance = sqrt(" << minDistance << ")" << endl;
+
     return 0;
 }
