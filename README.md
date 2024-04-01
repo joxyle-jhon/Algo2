@@ -1,3 +1,3 @@
 # Algorithm and Complexity (Algo 2)
 
-<h4>BSCS USTP-CDO 2nd Semester Course that will explore Algorithm and Complexity using C++. </h4>
+<h4>This contain by Algorithm and Complexity 2 course work in BS Computer Science in UUSTP-CDO</h4>
