@@ -16,3 +16,5 @@ int main() {
     std::cout << "Result: " << power(a, b) << std::endl;
     return 0;
 }
+
+
